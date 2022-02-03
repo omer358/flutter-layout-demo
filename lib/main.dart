@@ -12,15 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color = Theme.of(context).primaryColor;
 
-Widget buttonSection = Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    _buildButtonColumn(color, Icons.call, 'CALL'),
-    _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-    _buildButtonColumn(color, Icons.share, 'SHARE'),
-  ],
-);
-
     Widget titleSection = Container(
       padding: const EdgeInsets.all(24),
       child: Row(
@@ -59,21 +50,36 @@ Widget buttonSection = Row(
       ),
     );
 
-    
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
+    );
+
+    Widget textSection = const Padding(
+      padding: EdgeInsets.all(32),
+      child: Text(
+        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+        'Alps. Situated 1,578 meters above sea level, it is one of the '
+        'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+        'half-hour walk through pastures and pine forest, leads you to the '
+        'lake, which warms to 20 degrees Celsius in the summer. Activities '
+        'enjoyed here include rowing, and riding the summer toboggan run.',
+        softWrap: true,
+      ),
+    );
+
     return MaterialApp(
       title: 'Flutter Layout Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
       home: Scaffold(
           appBar: AppBar(
             title: const Text("Flutter Layout Demo"),
           ),
           body: Column(
-            children: [
-              titleSection,
-              buttonSection
-              ],
+            children: [titleSection, buttonSection, textSection],
           )),
     );
   }
